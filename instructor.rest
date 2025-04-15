@@ -5,7 +5,7 @@ Accept: application/json
 ###
 
 # Get a single instructor by ID
-GET http://localhost:3000/instructor/67e8aa65e25c6efb99dbde5b
+GET http://localhost:3000/instructor/67fe41b72b7293241e4728fc
 Accept: application/json
 
 ###
@@ -15,12 +15,12 @@ POST http://localhost:3000/instructor
 Content-Type: application/json
 
 {
-    "firstName": "Johnson",
-    "lastName": "Philip",
-    "course": "English",
-    "gender": "Female",
+    "firstName": "Spice",
+    "lastName": "Abraham",
+    "course": "Mathematics",
+    "gender": "Male",
     "age": 23,
-    "email": "Best@example.com",
+    "email": "a@example.com",
     "qualification": "PhD"
 }
 

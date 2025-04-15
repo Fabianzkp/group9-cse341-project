@@ -15,13 +15,13 @@ POST http://localhost:3000/student
 Content-Type: application/json
 
 {
-    "firstName": "Jennifer",
-    "lastName": "Lopez",
-    "gender": "Female",
+    "firstName": "John",
+    "lastName": "Tope",
+    "gender": "Male",
     "age": 25,
-    "favoriteSubject": "Biology",
-    "grade": "C+",
-    "email": "jennifer@example.com"
+    "favoriteSubject": "Mathematics",
+    "grade": "B+",
+    "email": "john@example.com"
 }
 
 ###

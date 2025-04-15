@@ -183,14 +183,6 @@ router.delete(
  *           type: string
  *         credits:
  *           type: number
- *         instructors:
- *           type: array
- *           items:
- *             type: string
- *         students:
- *           type: array
- *           items:
- *             type: string
  *         createdAt:
  *           type: string
  *           format: date-time

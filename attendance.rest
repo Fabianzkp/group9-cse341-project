@@ -1,0 +1,52 @@
+# Get all attendance records
+GET http://localhost:3000/attendance
+Accept: application/json
+
+###
+
+# Get attendance records by studentId
+GET http://localhost:3000/attendance?studentId=67fe459d0ae02e7d66ed1a40
+Accept: application/json
+
+###
+
+# Get attendance records by courseId
+GET http://localhost:3000/attendance?courseId=67fe5004bf3e434a3fd9df1b
+Accept: application/json
+
+###
+
+# Get a single attendance record by ID
+GET http://localhost:3000/attendance/67fe6e007197711bd6d871b9
+Accept: application/json
+
+###
+
+# Create a new attendance record
+POST http://localhost:3000/attendance
+Content-Type: application/json
+
+{
+    "studentId": "67fe459d0ae02e7d66ed1a40",
+    "courseId": "67fe54774305a4cd473e2602",
+    "date": "2025-04-15T09:00:00Z",
+    "status": "Present",
+    "notes": "On time"
+}
+
+###
+
+# Update an attendance record by ID
+PUT http://localhost:3000/attendance/60d0fe4f5311236168a109ca
+Content-Type: application/json
+
+{
+    "status": "Late",
+    "notes": "Arrived 10 minutes late"
+}
+
+###
+
+# Delete an attendance record by ID
+DELETE http://localhost:3000/attendance/67fe6ae70ec9c9149979d6b2
+Accept: application/json

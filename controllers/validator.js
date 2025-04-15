@@ -150,6 +150,39 @@ const courseValidationRules = () => {
   ];
 };
 
+
+// Attendance Validator
+const attendanceValidationRules = () => {
+  return [
+    body("studentId")
+      .optional()
+      .isMongoId()
+      .withMessage("Valid Student ID is required"),
+    body("courseId")
+      .optional()
+      .isMongoId()
+      .withMessage("Valid Course ID is required"),
+    body("status")
+      .optional()
+      .isIn(["Present", "Absent", "Late"])
+      .withMessage("Status must be Present, Absent, or Late"),
+    body("date")
+      .optional()
+      .isISO8601()
+      .toDate()
+      .withMessage("Invalid date format"),
+    body("notes")
+      .optional()
+      .isString()
+      .trim()
+      .withMessage("Notes must be a string"),
+    param("id")
+      .optional()
+      .isMongoId()
+      .withMessage("Invalid Attendance ID"),
+  ];
+};
+
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
@@ -165,5 +198,6 @@ module.exports = {
   bookValidationRules,
   playerValidationRules,
   courseValidationRules,
+  attendanceValidationRules,
   validate,
 };

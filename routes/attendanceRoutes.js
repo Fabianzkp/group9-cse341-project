@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const attendanceController = require('../controllers/attendanceController');
-const { body, param } = require('express-validator');
-const validation = require('../controllers/validator'); // Assuming your validator middleware is here
-
-// --- Swagger Definitions ---
+const { attendanceValidationRules, validate } = require('../controllers/validator');
 
 /**
  * @swagger
@@ -72,8 +69,6 @@ const validation = require('../controllers/validator'); // Assuming your validat
  *   description: API for managing student attendance records
  */
 
-// --- Routes ---
-
 /**
  * @swagger
  * /attendance:
@@ -126,17 +121,7 @@ const validation = require('../controllers/validator'); // Assuming your validat
  *       500:
  *         description: Server error
  */
-router.post('/',
-  [
-    body('studentId').isMongoId().withMessage('Valid Student ID is required'),
-    body('courseId').isMongoId().withMessage('Valid Course ID is required'),
-    body('status').isIn(['Present', 'Absent', 'Late']).withMessage('Status must be Present, Absent, or Late'),
-    body('date').optional().isISO8601().toDate().withMessage('Invalid date format'),
-    body('notes').optional().isString().trim()
-  ],
-  validation.validate, 
-  attendanceController.recordAttendance
-);
+router.post('/', attendanceValidationRules(), validate, attendanceController.recordAttendance);
 
 /**
  * @swagger
@@ -191,13 +176,7 @@ router.get('/', attendanceController.getAllAttendance);
  *       500:
  *         description: Server error
  */
-router.get('/:id',
-  [
-    param('id').isMongoId().withMessage('Invalid Attendance ID format')
-  ],
-  validation.validate,
-  attendanceController.getAttendanceById
-);
+router.get('/:id', attendanceValidationRules(), validate, attendanceController.getAttendanceById);
 
 /**
  * @swagger
@@ -242,18 +221,7 @@ router.get('/:id',
  *       500:
  *         description: Server error
  */
-router.put('/:id',
-  [
-    param('id').isMongoId().withMessage('Invalid Attendance ID format'),
-    // Add validation for fields being updated
-    body('status').optional().isIn(['Present', 'Absent', 'Late']).withMessage('Status must be Present, Absent, or Late'),
-    body('date').optional().isISO8601().toDate().withMessage('Invalid date format'),
-    body('notes').optional().isString().trim()
-    // Note: Don't validate studentId/courseId here as they shouldn't typically be updated via PUT
-  ],
-  validation.validate,
-  attendanceController.updateAttendance
-);
+router.put('/:id', attendanceValidationRules(), validate, attendanceController.updateAttendance);
 
 /**
  * @swagger
@@ -273,12 +241,6 @@ router.put('/:id',
  *       500:
  *         description: Server error
  */
-router.delete('/:id',
-  [
-    param('id').isMongoId().withMessage('Invalid Attendance ID format')
-  ],
-  validation.validate,
-  attendanceController.deleteAttendance
-);
+router.delete('/:id', attendanceValidationRules(), validate, attendanceController.deleteAttendance);
 
 module.exports = router;

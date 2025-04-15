@@ -27,11 +27,11 @@ Content-Type: application/json
 ###
 
 # Borrow a book by a student
-POST http://localhost:3000/library/books/67ee9cd522d1dbe195f2cfdd/borrow
+POST http://localhost:3000/library/books/67fe44580ae02e7d66ed1a34/borrow
 Content-Type: application/json
 
 {
-    "borrowerId": "67e9e2850d65edefaa323d59",
+    "borrowerId": "67fe41392b7293241e4728f9",
     "borrowerType": "Student"
 }
 

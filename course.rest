@@ -5,7 +5,7 @@ Accept: application/json
 ###
 
 # Get a single course by ID
-GET http://localhost:3000/course/67e6c038762b489499bd6224
+GET http://localhost:3000/course/67fe452e0ae02e7d66ed1a3d
 Accept: application/json
 
 ###
@@ -37,5 +37,5 @@ Content-Type: application/json
 ###
 
 # Delete a course by ID
-DELETE http://localhost:3000/course/67e6c038762b489499bd6224
+DELETE http://localhost:3000/course/67fe53c59c390ca58c0d97b0
 Accept: application/json
