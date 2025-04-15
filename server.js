@@ -34,7 +34,7 @@ app.use(passport.session());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-Routes
+//routes
 app.use("/", routes);
 app.use("/auth", authRoutes);
 app.use("/student", ensureAuthenticated, studentRoutes);
